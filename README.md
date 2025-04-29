@@ -48,6 +48,8 @@ end
 ## License
 
 This project is licensed under the MIT License.
+⚠️ This project uses CarSim's COM interface (VSCOM) and requires a licensed copy of CarSim.
+It does not contain or distribute any proprietary files from Mechanical Simulation.
 
 ---
 
