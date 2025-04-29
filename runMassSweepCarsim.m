@@ -1,3 +1,10 @@
+% File        : runMassSweepCarsim.m
+% Description : Clone and configure CarSim datasets for different vehicle masses using COM interface (Python)
+% Author      : kbLim
+% Created     : 2025-04-29
+% Last Updated: 2025-04-29
+% input: mass(kg)
+% output: CarSim dataset({Your_Location_to_CarSim}\Results)
 
 %% Function
 
@@ -19,7 +26,7 @@ function runMassSweepCarsim(mass)
     
     % Vehicle Assembly 원본 정보
     originalVehLib  = 'Vehicle: Assembly';  % 이게 Library 이름임
-    originalVehName = 'C-Class, Hatchback: No ABS';
+    % originalVehName = 'C-Class, Hatchback: No ABS';
     
     % 복제 Vehicle
     newVehName = ['Vehicle_' num2str(mass) 'kg'];
