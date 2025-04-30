@@ -32,6 +32,12 @@ carsim-automation/
 ---
 
 ## Quick Start
+### 0. Register Automation Server
+- 1. Launch Windows Command Prompt as an Admin.
+  2. Enter,
+     {Your_CarSim_Installed_Folder}\CarSim.exe /RegServer
+  3. Enter,
+     {Your_CarSim_Installed_Folder}\CarSim.exe /Automation
 
 ### 1. Automate CarSim Runs (MATLAB)
 
