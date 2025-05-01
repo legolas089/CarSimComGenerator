@@ -2,32 +2,47 @@
 
 🚗 MATLAB scripts to automate CarSim simulations using the COM interface.
 
-This project automates the duplication of Run Control datasets, modifies vehicle parameters (e.g., sprung mass), batch-executes simulations, and processes the results using Python.
+This repository contains a set of modularized MATLAB scripts for automating simulation workflows in CarSim using the COM interface. The scripts support dataset duplication, modification, and batch simulation execution — all programmatically, without GUI interaction.
 
 ---
 
-## Features
+## 📁 Repository Structure
 
-- Duplicate and configure CarSim Run Control datasets automatically
-- Modify vehicle parameters (e.g., Sprung Mass `M_SU`)
-- Batch run multiple simulations without manual intervention
----
+```
+CarSim-Automation/
+│
+├── VSCOM Modular Codes/
+│   ├── copyRunControl.m
+│   ├── copyProcedures.m
+│   ├── copyVehicleAssembly.m
+│   ├── copyVehicleSprungMass.m
+│   └── VSCOM_CreateDataSet_Example.m
+│
+├── VSCOM Test Codes/
+│   └── runMassSweepCarsim.m
+│   └── runMassSweepCarsim_python.py
+│   └── VSCOM_test.m
+│   └── etc
+|
+├── README.md
+└── .gitignore
+```
 
-## Repository Structure
-
-carsim-automation/  
-├── runMassSweepCarsim.m # MATLAB function to set up and run mass sweep simulations  
-├── VSCOM_test.m # Main script to automate batch execution and overlay setup  
-└── README.md # Project overview (this file)
+- `VSCOM Modular Codes/`: Refactored, reusable functions for controlling CarSim via COM.
+- `VSCOM Test Codes/`: Original script before function-based refactoring.
+- `VSCOM_CreateDataSet_Example.m`: Orchestrates the simulation setup and execution using the modular functions.
 
 ---
 
 ## Requirements
 
-### MATLAB
-- MATLAB R2023b or newer
-- CarSim installed and registered as a COM server (`CarSim.Application`)
-- CarSim database containing a `Baseline COM` Run Control dataset
+- **CarSim** installed and registered as a COM server  
+  Run the following command as Administrator to register:
+  ```bash
+  "C:\Program Files (x86)\CarSim2021.1_Prog\CarSim.exe" /RegServer
+  ```
+
+- **MATLAB** with ActiveX/COM interface support
 
 ---
 
@@ -41,16 +56,26 @@ carsim-automation/
 
 ### 1. Automate CarSim Runs (MATLAB)
 
-```matlab
-h = actxserver('CarSim.Application');
-massList = [1200, 1400, 1600];
-for mass = massList
-    runMassSweepCarsim(mass);
-end
-```
+1. Open `VSCOM Modular Codes/VSCOM_CreateDataSet_Example.m` in MATLAB.
+2. Review and modify dataset names or categories if needed.
+3. Run the script:
+   - Duplicates Run Control, Procedure, Vehicle Assembly, Sprung Mass datasets
+   - Applies key parameter changes (e.g., speed, output format)
+   - Executes the simulation via COM
 
 ---
+## 🧠 Function Overview
 
+Each helper function performs a specific duplication + customization task:
+
+- `copyRunControl.m`: Clone and modify a Run Control dataset
+- `copyProcedures.m`: Clone and modify a Procedure dataset (e.g., speed)
+- `copyVehicleAssembly.m`: Duplicate Vehicle Assembly with optional changes
+- `copyVehicleSprungMass.m`: Modify Sprung Mass and relink to Vehicle Assembly
+
+These are used in sequence in `VSCOM_CreateDataSet_Example.m`.
+
+---
 ## License
 
 This project is licensed under the MIT License.
@@ -59,6 +84,8 @@ It does not contain or distribute any proprietary files from Mechanical Simulati
 
 ---
 
-## Author
+## 👤 Author
 
-kblim
+kblim,
+Hanyang University, Department of Automotive Engineering
+Reliability Engineering & Design Lab.
