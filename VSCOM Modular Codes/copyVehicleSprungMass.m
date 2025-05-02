@@ -31,7 +31,7 @@
 % =========================================================================
 
 
-function copyVehicleSprungMass(h, originalSprungLib, originalSprungName, originalSprungCat, newSprungName, targetSprungCat, originalVehLib, newVehName, targetVehCat)
+function copyVehicleSprungMass(h, originalSprungLib, originalSprungName, originalSprungCat, newSprungName, targetSprungCat, originalVehLib, newVehName, targetVehCat, myMass, myCGH)
 
     % 기존 Vehicle Sprung mass 복제본이 있으면 삭제
     if h.DataSetExists(originalSprungLib, newSprungName, targetSprungCat)
@@ -47,7 +47,8 @@ function copyVehicleSprungMass(h, originalSprungLib, originalSprungName, origina
 
     %{ Set your Vehicle Sprung mass settings here %}
     % From here
-    h.Yellow('M_SU', num2str(1300)); % Set Sprung mass to 1300 kg
+    h.Yellow('M_SU', num2str(myMass));
+    h.Yellow('H_CG_SU', num2str(myCGH)); 
     % to here
 
 

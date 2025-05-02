@@ -63,6 +63,29 @@ CarSim-Automation/
    - Applies key parameter changes (e.g., speed, output format)
    - Executes the simulation via COM
 
+### 2. Code Example: Change vehicle mass & CGH and Run (MATLAB)
+```matlab
+addpath('{Your folder}\VSCOM Modular Codes');
+h.actxserver('CarSim.Application);
+h.GoHome();
+
+% Define your CarSim Settings %
+% 1. Duplicate Run Control
+copyRunControl(h, originalRunLib, originalRunName, originalRunCat, newRunName, targetCat);
+
+% 2. Duplicate procedures
+copyProcedures(h, originalProcLib, originalProcName, originalProcCat, newProcName, targetCatProc);
+
+% 3. Duplicate Vehicle assembly
+copyVehicleAssembly(h, originalVehLib, originalVehName, originalVehCat, newVehName, targetVehCat);
+
+% 4. Duplicate Sprung mass
+copyVehicleSprungMass(h, originalSprungLib, originalSprungName, originalSprungCat, newSprungName, targetSprungCat, originalVehLib, newVehName, targetVehCat, myMass, myCgh);
+
+% 5. Run
+h.Run('','')
+```
+
 ---
 ## 🧠 Function Overview
 
