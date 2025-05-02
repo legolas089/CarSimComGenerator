@@ -39,7 +39,9 @@ CarSim-Automation/
 - **CarSim** installed and registered as a COM server  
   Run the following command as Administrator to register:
   ```bash
-  "C:\Program Files (x86)\CarSim2021.1_Prog\CarSim.exe" /RegServer
+  {CarSim prog folder}\CarSim.exe /RegServer
+  {CarSim prog folder}\CarSim.exe /Automation
+  {CarSim prog folder}\CarSim.exe /SETQUICKLAUNCH
   ```
 
 - **MATLAB** with ActiveX/COM interface support
